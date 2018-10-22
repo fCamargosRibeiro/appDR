@@ -2,7 +2,7 @@
   "name": "app-drfront",
   "version": "0.0.0",
   "scripts": {
-    "postinstall": "ng build --aot -prod",
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
@@ -42,7 +42,9 @@
     "mongoose": "^5.3.1",
     "morgan": "^1.9.1",
     "nodemailer": "^4.6.8",
-    "smtp-server": "^2.0.1"
+    "smtp-server": "^2.0.1",
+    "@angular/cli": "^7.0.2",
+    "@angular/compiler-cli": "^6.1.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",

@@ -19,7 +19,7 @@ app.use('/api', require('./routes/appDR.routes'));
 
 app.get('/*', function (req, res) {
 
-    res.sendFile(path.join(__dirname + '/dist/<name-of-app>/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/appDR/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
