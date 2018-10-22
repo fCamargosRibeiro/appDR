@@ -9,7 +9,7 @@ const cors = require('cors');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/<name-of-app>'));
+app.use(express.static(__dirname + '/dist/appDRFront'));
 
 app.use(morgan('dev'));
 app.use(cors({ origin: 'http://localhost:' + process.env.PORT }));
