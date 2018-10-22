@@ -1,3 +1,34 @@
-<p>
-  contact-us works!
-</p>
+<div class="example-container row justify-content-center align-items-center h-100">
+  <h3 class="col-md-8">Contate-nos, deixe sua mensagem e entraremos em contato.</h3>
+  <p-growl [(value)]="msgs"></p-growl>
+  <form #sendMailForm="ngForm" (ngSubmit)="sendMail()" class="col-md-8">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="enviarEmail.nome" name="nome" placeholder="Nome" required />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input matInput [(ngModel)]="enviarEmail.email" name="email" placeholder="Email" required />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Telefone</mat-label>
+      <input matInput [(ngModel)]="enviarEmail.telefone" name="telefone" mask='(00) 00000-0000' placeholder="Telefone"
+        required />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Assunto</mat-label>
+      <input matInput [(ngModel)]="enviarEmail.assunto" name="assunto" placeholder="Assunto" required />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Mensagem</mat-label>
+      <textarea matInput #input [(ngModel)]="enviarEmail.mensagem" name="mensagem" placeholder="Mensagem" maxlength="500" rows="7"></textarea>
+      <mat-hint align="end">{{input.value?.length || 0}}/500</mat-hint>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button class="posicaoButton" color="primary">Enviar E-mail</button>
+  </form>
+</div>
