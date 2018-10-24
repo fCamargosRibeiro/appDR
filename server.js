@@ -9,7 +9,7 @@ const cors = require('cors');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/appDRFront'));
+app.use(express.static(__dirname + '/dist/drbotelho'));
 
 app.use(morgan('dev'));
 app.use(cors({ origin: 'http://localhost:' + process.env.PORT }));
@@ -19,7 +19,7 @@ app.use('/api', require('./routes/appDR.routes'));
 
 app.get('/*', function (req, res) {
 
-    res.sendFile(path.join(__dirname + '/dist/appDRFront/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/drbotelho/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
