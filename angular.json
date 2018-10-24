@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "appDRFront": {
+    "drbotelho": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/appDRFront",
+            "outputPath": "dist/drbotelho",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,12 +23,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/hammerjs/hammer.js",
-              "node_modules/materialize-css/dist/js/materialize.js"
+              "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {
@@ -54,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "appDRFront:build"
+            "browserTarget": "drbotelho:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "appDRFront:build:production"
+              "browserTarget": "drbotelho:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "appDRFront:build"
+            "browserTarget": "drbotelho:build"
           }
         },
         "test": {
@@ -99,7 +103,7 @@
         }
       }
     },
-    "appDRFront-e2e": {
+    "drbotelho-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -107,11 +111,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "appDRFront:serve"
+            "devServerTarget": "drbotelho:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "appDRFront:serve:production"
+              "devServerTarget": "drbotelho:serve:production"
             }
           }
         },
@@ -127,5 +131,5 @@
       }
     }
   },
-  "defaultProject": "appDRFront"
+  "defaultProject": "drbotelho"
 }

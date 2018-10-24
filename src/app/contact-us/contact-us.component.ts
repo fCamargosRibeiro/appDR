@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SendMailService } from '../../app/services/send-mail.service';
+import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+
+import { SendMailService } from '../services/send-mail.service';
 
 import { SendMail } from '../models/send-mail';
 
 import { Message } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css'],
-  providers: [SendMailService]
+  providers: [SendMailService, MessageService]
 })
 export class ContactUsComponent implements OnInit {
 
@@ -18,22 +21,28 @@ export class ContactUsComponent implements OnInit {
 
   msgs: Message[] = [];
 
-  constructor(private sendMailService: SendMailService) {
+  contatoform: FormGroup;
+
+  submitted: boolean;
+
+  constructor(private fb: FormBuilder, private sendMailService: SendMailService, private messageService: MessageService) {
 
   }
 
   ngOnInit() {
-  }
-
-  sendMail() {
-    this.sendMailService.sendMail(this.enviarEmail).subscribe(resp => {
-      this.showSuccess();
+    this.contatoform = this.fb.group({
+      'nome': new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      'email': new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      'telefone': new FormControl('', Validators.required),
+      'assunto': new FormControl('', Validators.required),
+      'mensagem': new FormControl('', [Validators.required, Validators.maxLength(500)])
     });
   }
 
-  showSuccess() {
-    this.msgs = [];
-    this.msgs.push({ severity: 'success', summary: 'Successo', detail: 'E-mail enviado com sucesso!' });
+  sendMail(dadosEmail) {
+    this.sendMailService.sendMail(dadosEmail).subscribe(resp => {
+      this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Mensagem enviada com sucesso!' });
+    }, err => { this.messageService.add({ severity: 'error', summary: 'Service Message', detail: 'Falha ao enviar a mensagem. Tente novamente mais tarde!' }); });
   }
 
 }

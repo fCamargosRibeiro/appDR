@@ -1,37 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatInputModule, MatListModule } from '@angular/material';
-import { NgxMaskModule } from 'ngx-mask'
-import { GrowlModule } from 'primeng/growl';
-import { AccordionModule } from 'primeng/accordion';
+
+//Componentes externos
 import { InputTextModule } from 'primeng/inputtext';
-import { routes } from './app.router';
-import { MatCardModule } from '@angular/material/card';
+import { GrowlModule } from 'primeng/growl';
+import { MessagesModule } from 'primeng/messages';
+import { NgxMaskModule } from 'ngx-mask'
+
+//Componentes internos
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { CheckboxModule } from 'primeng/checkbox';
-import { ContextMenuModule } from 'primeng/contextmenu';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SpecialtiesComponent } from './specialties/specialties.component';
+
+//Rotas
+import { routes } from './app.router';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     AboutUsComponent,
     HomeComponent,
-    HeaderComponent,
     FooterComponent,
     ContactUsComponent,
     SpecialtiesComponent
@@ -39,26 +36,17 @@ import { SpecialtiesComponent } from './specialties/specialties.component';
   imports: [
     BrowserModule,
     FormsModule,
-    MatButtonModule,
-    ButtonModule,
-    CardModule,
-    MatCardModule,
-    MatListModule,
-    MatCheckboxModule,
-    CheckboxModule,
-    MatInputModule,
-    HttpClientModule,
-    ContextMenuModule,
-    GrowlModule,
-    AccordionModule,
+    ReactiveFormsModule,
     InputTextModule,
+    GrowlModule,
+    HttpClientModule,
+    MessagesModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
-    CarouselModule.forRoot(),
+    NgxMaskModule.forRoot(),
     RouterModule.forRoot(routes),
-    NgxMaskModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
